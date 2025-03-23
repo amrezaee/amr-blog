@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 
 def start_page(request):
-    pass
+    return render(request, "blog/start_page.html")
 
 
 def list_posts(request):
