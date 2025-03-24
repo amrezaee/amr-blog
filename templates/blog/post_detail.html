@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}Post Title{% endblock title %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static "blog/css/post_detail.css"%}">
+{% endblock css_files %}
+
+{% block content %}
+<section id="summary">
+    <h2>Post Title</h2>
+
+    <article>
+        <img src="{% static "blog/images/programming.png" %}" alt="Post Title">
+
+        <address>by Amirmohamad Rezaee</address>
+        
+        <div>
+            Last updated on <time>July 10th</time>
+        </div>
+    </article>
+</section>
+
+<main>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia nostrum odio obcaecati magni possimus molestiae animi velit saepe nesciunt dolorem dicta iure, deserunt perferendis, officiis ut nisi dignissimos sint qui.
+    </p>
+    <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus corporis nostrum dignissimos alias maiores tempore quas. Quia, quos? Quasi beatae molestiae blanditiis minus commodi aliquam quos voluptatibus ut? Unde, ea.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam corrupti, debitis quaerat recusandae voluptas nesciunt labore iste itaque quidem sapiente in facere ratione et ducimus voluptate fugit dignissimos voluptates cupiditate.
+    </p>
+</main>
+{% endblock content %}
