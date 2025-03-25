@@ -20,5 +20,5 @@ def show_post(request, slug):
     post = get_object_or_404(Post, slug=slug)
     return render(request, "blog/post_detail.html",{
         "post": post,
-        "author": post.author
+        "post_tags": post.tags.all()
     })
