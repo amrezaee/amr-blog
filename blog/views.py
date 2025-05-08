@@ -34,6 +34,7 @@ class PostDetailView(View):
             "post": post,
             "comment_form": CommentForm(),
             "post_tags": post.tags.all(),
+            "comments": post.comments.all().order_by("-id"),
         }
         return render(request, "blog/post_detail.html", context)
 
@@ -52,6 +53,7 @@ class PostDetailView(View):
             "post": post,
             "comment_form": form,
             "post_tags": post.tags.all(),
+            "comments": post.comments.all().order_by("-id"),
         }
 
         return render(request, "blog/post_detail.html", context)

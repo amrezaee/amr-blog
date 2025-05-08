@@ -44,6 +44,17 @@
     </p>
 </main>
 
+<section id="comments">
+    <ul>
+        {% for comment in comments %}
+            <li>
+                <h2>{{comment.username}}</h2>
+                <p>{{comment.text|linebreaks}}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</section>
+
 <section id="comment-form">
     <h2>Your Comment</h2>
     <form action="{% url "show_post" post.slug %}" method=POST>
