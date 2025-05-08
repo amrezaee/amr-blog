@@ -1,5 +1,10 @@
-from django.views.generic import ListView, DetailView
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
+from django.views import View
+from django.views.generic import ListView
+from django.urls import reverse
 
+from .forms import CommentForm
 from .models import Post
 
 
@@ -22,12 +27,31 @@ class ListPostsView(ListView):
     context_object_name = "all_posts"
 
 
-class PostDetailView(DetailView):
-    template_name = "blog/post_detail.html"
-    model = Post
-    context_object_name = "post"
+class PostDetailView(View):
+    def get(self, request, slug):
+        post = Post.objects.get(slug=slug)
+        context = {
+            "post": post,
+            "comment_form": CommentForm(),
+            "post_tags": post.tags.all(),
+        }
+        return render(request, "blog/post_detail.html", context)
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["post_tags"] = self.object.tags.all()
-        return context
+    def post(self, request, slug):
+        form = CommentForm(request.POST)
+        post = Post.objects.get(slug=slug)
+
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.save()
+
+            return HttpResponseRedirect(reverse("show_post", args=[slug]))
+
+        context = {
+            "post": post,
+            "comment_form": form,
+            "post_tags": post.tags.all(),
+        }
+
+        return render(request, "blog/post_detail.html", context)
