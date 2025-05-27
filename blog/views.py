@@ -1,8 +1,8 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
 from django.views import View
 from django.views.generic import ListView
-from django.urls import reverse
 
 from .forms import CommentForm
 from .models import Post

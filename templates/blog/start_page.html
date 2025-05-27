@@ -1,36 +1,32 @@
 {% extends "base.html" %}
 {% load static %}
-
-{% block title %}AMR's Blog{% endblock title %}
-
+{% block title %}
+    AMR's Blog
+{% endblock title %}
 {% block css_files %}
     <link rel="stylesheet" href="{% static "blog/css/post.css" %}">
     <link rel="stylesheet" href="{% static "blog/css/start_page.css" %}">
 {% endblock css_files %}
-
 {% block content %}
-<section id="welcome">
-    <header>
-        <img src="{% static "blog/images/amr.png" %}" alt="AMR - The Author of This Blog"/>
-        
-        <h2>Amirmohamad Rezaee's Blog</h2>
-    </header>
-    
-    <p>Hi, I am Amirmohamad and i love computers.</p>
-</section>
-
-<section id="latest-posts">
-    <h2>My Latest Thoughts</h2>
-    <ul>
-        {% for post in posts %}
-            {% include "blog/post.html" %}
-        {% endfor %}
-    </ul>
-</section>
-
-<section id="about">
-    <h2>What I Do</h2>
-    <p>I love programming and video games.</p>
-    <p>My goal is to create a nice place for peaple who love computers.</p>
-</section>
+    <section id="welcome">
+        <header>
+            <img src="{% static "blog/images/amr.png" %}"
+                 alt="AMR - The Author of This Blog" />
+            <h2>Amirmohamad Rezaee's Blog</h2>
+        </header>
+        <p>Hi, I am Amirmohamad and i love computers.</p>
+    </section>
+    <section id="latest-posts">
+        <h2>My Latest Thoughts</h2>
+        <ul>
+            {% for post in posts %}
+                {% include "blog/post.html" %}
+            {% endfor %}
+        </ul>
+    </section>
+    <section id="about">
+        <h2>What I Do</h2>
+        <p>I love programming and video games.</p>
+        <p>My goal is to create a nice place for peaple who love computers.</p>
+    </section>
 {% endblock content %}
