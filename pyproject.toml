@@ -1,0 +1,13 @@
+[project]
+name = "amr_blog"
+version = "0.0.1"
+description = "A Django blog website for learning purposes"
+authors = [{name = "Amirmohamad Rezaee", email = "amrezaee@protonmail.com"}]
+requires-python = ">=3.13"
+
+[tool.pyright]
+# Specify the Python version and paths
+pythonVersion = "3.13"  # Replace with your Python version, e.g., "3.11"
+include = ["amr_blog", "blog"]
+# Enable django-stubs
+stubPath = "./.venv/lib/python3.13/site-packages/django_stubs"
